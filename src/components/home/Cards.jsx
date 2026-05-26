@@ -54,7 +54,7 @@ const Cards = () => {
         <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6.25'>
           {filteredCards.map((item, index) => (
             <div key={index} className='border rounded-[30px] border-base-color py-8 px-10 hover:border-transparent hover:shadow-[0px_8px_35px_0px_#0000001A] transition-all duration-300'>
-              <img className='w-86 h-63 border-none rounded-[20px]' src={item.Image} alt='card-img' />
+              <img className='w-86 h-63 border-none rounded-[20px] object-contain' src={item.Image} alt='card-img' />
 
               <h1 className='font-semibold text-2xl leading-[150%] text-dark-blue mt-[19.35px] mb-3'>{item.heading}</h1>
 
