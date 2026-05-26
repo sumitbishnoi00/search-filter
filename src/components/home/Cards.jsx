@@ -20,9 +20,9 @@ const Cards = () => {
 
   return (
     <section className='px-3 sm:pb-20 pb-10 pt-10'>
-      <div className='max-w-335 w-full mx-auto flex flex-col items-center justify-center text-center'>
+      <div className='max-w-335 w-full mx-auto flex flex-col items-center justify-center'>
 
-      <h1 className='font-extrabold md:text-6xl sm:text-5xl text-4xl leading-[150%] text-light-blue mb-8'> Search <span className='text-dark-blue'> Filter </span></h1>
+      <h1 className='font-extrabold md:text-6xl sm:text-5xl text-4xl leading-[150%] text-light-blue mb-8 text-center'> Search <span className='text-dark-blue'> Filter </span></h1>
 
         {/* Filter button */}
 
