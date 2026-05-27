@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
@@ -7,6 +7,13 @@ const Signup = () => {
     const navigate = useNavigate()
 
     const [signupData, setSignupData] = useState({ firstName: "", lastName: "", email: "", password: "" })
+
+    useEffect(() => {
+
+        localStorage.getItem("isLogin")
+        ? navigate("/cards")
+        : null
+    }, [])
 
     function handSignup(e) {
 

@@ -1,6 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CARDS_DATA } from '../../utils/Helper'
+import { useNavigate } from 'react-router-dom'
 const Cards = () => {
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+
+    !localStorage.getItem("isLogin")
+      ? navigate("/")
+      : null
+  }, [])
 
   const [category, setCategory] = useState("All")
   const [search, setSearch] = useState("")
@@ -21,8 +31,16 @@ const Cards = () => {
   return (
     <section className='px-3 sm:pb-20 pb-10 pt-10'>
       <div className='max-w-335 w-full mx-auto flex flex-col items-center justify-center'>
+        
+        <div className='flex max-sm:flex-col justify-between max-sm:justify-center items-center w-full sm:mb-8 mb-5'>
+          <h1 className='font-extrabold md:text-6xl sm:text-5xl text-4xl leading-[150%] text-light-blue text-center'> Search <span className='text-dark-blue'> Filter </span></h1>
 
-      <h1 className='font-extrabold md:text-6xl sm:text-5xl text-4xl leading-[150%] text-light-blue mb-8 text-center'> Search <span className='text-dark-blue'> Filter </span></h1>
+          <button onClick={() => (localStorage.removeItem("isLogin"), navigate("/"))} className='sm:px-6 px-3 sm:py-3 py-2 border border-transparent rounded-xl font-semibold sm:text-3xl text-2xl leading-[100%] text-center bg-red-500 text-white hover:text-red-500 hover:bg-white hover:border-red-500 cursor-pointer transition-all duration-500'>
+            Logout
+          </button>
+
+        </div>
+
 
         {/* Filter button */}
 
