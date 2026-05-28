@@ -11,8 +11,8 @@ const Signup = () => {
     useEffect(() => {
 
         localStorage.getItem("isLogin")
-        ? navigate("/cards")
-        : null
+            ? navigate("/cards")
+            : null
     }, [])
 
     function handSignup(e) {
@@ -26,17 +26,31 @@ const Signup = () => {
 
             ? alert("Please Fill All Fields")
 
-            : (localStorage.setItem("user", JSON.stringify(signupData)),
-                alert("Signup Successfully"),
-                setSignupData({
-                    firstName: "",
-                    lastName: "",
-                    email: "",
-                    password: ""
-                }),
+            : (() => {
 
-                navigate("/login")
-            )
+                const oldUsers = JSON.parse(localStorage.getItem("users")) || []
+
+                const emailExist = oldUsers.find(
+                    (item) => item.email === signupData.email
+                )
+
+                emailExist
+                    ? alert("Email Already Exists")
+                    : (localStorage.setItem("users", JSON.stringify([...oldUsers, signupData])
+                    ),
+
+                        alert("Signup Successfully"),
+
+                        setSignupData({
+                            firstName: "",
+                            lastName: "",
+                            email: "",
+                            password: ""
+                        }),
+
+                        navigate("/login")
+                    )
+            })()
     }
     return (
         <section className="px-4 min-h-screen flex items-center bg-white-smoke ">
@@ -57,7 +71,7 @@ const Signup = () => {
                             required
                             placeholder="First name"
                             value={signupData.firstName}
-                            onChange={(e) => setSignupData({...signupData, firstName: e.target.value})}
+                            onChange={(e) => setSignupData({ ...signupData, firstName: e.target.value })}
                             className="bg-off-white text-dark-gray font-normal text-[16px] leading-[150%] w-full p-3.5 rounded-lg outline-none"
                         />
                         <input
@@ -65,7 +79,7 @@ const Signup = () => {
                             required
                             placeholder="Last name"
                             value={signupData.lastName}
-                            onChange={(e) => setSignupData({...signupData, lastName: e.target.value})}
+                            onChange={(e) => setSignupData({ ...signupData, lastName: e.target.value })}
                             className="bg-off-white text-dark-gray font-normal text-[16px] leading-[150%] w-full p-3.5 rounded-lg outline-none"
                         />
                         <input
@@ -73,7 +87,7 @@ const Signup = () => {
                             required
                             placeholder="Email address"
                             value={signupData.email}
-                            onChange={(e) => setSignupData({...signupData, email: e.target.value})}
+                            onChange={(e) => setSignupData({ ...signupData, email: e.target.value })}
                             className="bg-off-white text-dark-gray font-normal text-[16px] leading-[150%] w-full p-3.5 rounded-lg outline-none"
                         />
                         <input
@@ -81,7 +95,7 @@ const Signup = () => {
                             required
                             placeholder="Password"
                             value={signupData.password}
-                            onChange={(e) => setSignupData({...signupData, password: e.target.value})}
+                            onChange={(e) => setSignupData({ ...signupData, password: e.target.value })}
                             className="bg-off-white text-dark-gray font-normal text-[16px] leading-[150%] w-full p-3.5 rounded-lg outline-none"
                         />
 

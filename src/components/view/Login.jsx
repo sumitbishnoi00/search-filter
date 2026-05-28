@@ -18,14 +18,19 @@ const Login = () => {
 
         e.preventDefault()
 
-        const savedUser = JSON.parse(localStorage.getItem("user"))
+        const savedUser = JSON.parse(localStorage.getItem("users")) || []
 
-        !savedUser
+        const emailUser = savedUser.find(
+            (item) => 
+                item.email === loginData.email
+        )
+
+        !savedUser.length
             ? alert("Please Signup First")
-            : savedUser.email !== loginData.email
+            : !emailUser
                 ? alert("Invalid Email") 
             
-            : savedUser.password !== loginData.password
+            : emailUser.password !== loginData.password
                 ? alert("Invalid Password")
 
                 : (alert("Login Successfully"), localStorage.setItem("isLogin", true), navigate("/cards"))
