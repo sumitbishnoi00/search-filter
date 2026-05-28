@@ -40,8 +40,8 @@ const Signup = () => {
     }
     return (
         <section className="px-4 min-h-screen flex items-center bg-white-smoke ">
-            <div className="max-w-147.5 mx-auto p-16 bg-white shadow-[0px_4px_17.4px0px#00000014] rounded-2xl">
-                <div className="max-w-93.5 w-full text-center mx-auto ">
+            <div className="max-w-147.5 mx-auto p-16 bg-white shadow-[0px_4px_17.4px_0px_#00000014] rounded-2xl">
+                <div className="max-w-115.5 w-full text-center mx-auto ">
                     <h1 className="text-black font-bold text-[32px] leading-[120%]">
                         Sign up
                     </h1>

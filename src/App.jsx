@@ -5,6 +5,8 @@ import './App.css'
 import Cards from './components/view/Cards'
 import Signup from './components/view/Signup'
 import Login from './components/view/Login'
+import Forgot from './components/view/Forgot'
+import Reset from './components/view/Reset'
 
 function App() {
 
@@ -14,6 +16,8 @@ function App() {
           <Routes>
             <Route path='/' element={<Signup />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/forgot' element={<Forgot />} />
+            <Route path='/reset' element={<Reset />} />
             <Route path='/cards' element={<Cards />} />
           </Routes>
       </BrowserRouter>
