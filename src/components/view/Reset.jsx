@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { useNavigate } from 'react-router-dom'
+import {Link, useNavigate } from 'react-router-dom'
 
 const Reset = () => {
 
@@ -61,7 +61,9 @@ const Reset = () => {
                         </button>
                     </div>
                 </form>
-                
+                <h3 className="text-[16px] font-normal leading-[150%] text-center mt-6 text text-dark-gray">
+                    Go back to  <Link to="/forgot" className='text-black font-semibold ml-2 underline'>Forgot Password</Link>
+                </h3>
             </div>
         </section>
     )
