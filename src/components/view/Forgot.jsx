@@ -10,14 +10,18 @@ const Forgot = () => {
 
         e.preventDefault()
 
-        const savedUser = JSON.parse(localStorage.getItem("user"))
+        const savedUsers = JSON.parse(localStorage.getItem("users")) || []
+
+        const emailUser = savedUsers.find(
+            (item) => item.email === email
+        )
 
         email.trim() === ""
             ? alert("Please Fill Field")
 
-            : savedUser.email !== email
+            : !emailUser
                 ? alert("Email Not Found")
-                : (alert("Email Verified"), navigate("/reset"))
+                : (localStorage.setItem("forgotEmail", email), alert("Email Verified"), navigate("/reset"))
     }
     return (
         <section className="px-4 bg-off-white min-h-screen flex items-center">

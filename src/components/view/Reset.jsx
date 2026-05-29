@@ -11,7 +11,9 @@ const Reset = () => {
 
         e.preventDefault()
 
-        const savedUser = JSON.parse(localStorage.getItem("user"))
+        const savedUsers = JSON.parse(localStorage.getItem("users")) || []
+
+        const forgotEmail = localStorage.getItem("forgotEmail")
 
         passwordData.newPassword.trim() === "" ||
             passwordData.confirmPassword.trim() === ""
@@ -19,13 +21,24 @@ const Reset = () => {
             ? alert("Please Fill All Fields")
             : passwordData.newPassword !== passwordData.confirmPassword
                 ? alert("Passwords Do Not Match")
-                : (localStorage.setItem("user", JSON.stringify({...savedUser, password: passwordData.newPassword
+                
+                : (() => {
 
-                })
-            ),
-                alert("password Reset SuccessFully"), navigate("/login")
+                    const updatedUsers = savedUsers.map((item) => 
 
-            )
+                        item.email === forgotEmail
+                        ? {...item, password: passwordData.newPassword}
+                        : item
+                    )
+
+                    localStorage.setItem("users", JSON.stringify(updatedUsers))
+
+                    localStorage.removeItem("forgotEmail")
+
+                    alert("Password Reset Successfully")
+
+                    navigate("/login")
+                })()
     }
     return (
         <section className="px-4 bg-off-white min-h-screen flex items-center">
